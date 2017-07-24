@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
+import CommentsSection from '../CommentsSection';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        Echo App
+      <div>
+        <CommentsSection />
       </div>
     );
   }
