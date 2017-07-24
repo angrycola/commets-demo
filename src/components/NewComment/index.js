@@ -1,19 +1,49 @@
 import React, { Component } from 'react';
 
 class NewComment extends Component {
+  state={
+    content: ''
+  }
+
+  handleChange = event => {
+    this.setState({
+      [event.target.name]:event.target.value
+    });
+  }
+
+  handleSubmit = event => {
+    event.preventDefault();
+    const comment = { content: this.state.content };
+    this.setState({ content: '' });
+    this.props.addComment(comment);
+  }
+
   render() {
+
     return(
-      <form action="" method="post">
+      <form>
         <div className="comment-entry">
           <div className="comment-entry-header">
             <img alt="MyNick" src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
                  className="avatar-image size32" /> MyNick
           </div>
           <div className="form-group">
-            <textarea className="form-control" name="text" placeholder="Put your shit here..."></textarea>
+            <textarea
+              onChange={ this.handleChange }
+              className="form-control"
+              name="content"
+              value={ this.state.content }
+              placeholder="Put your shit here..."
+            >
+            </textarea>
           </div>
           <div className="comment-entry-footer">
-            <button type="submit" className="btn btn-default btn-sm btn-block">Submit</button>
+            <button
+              onClick={ this.handleSubmit }
+              type="submit"
+              className="btn btn-default btn-sm btn-block">
+                Submit
+              </button>
           </div>
         </div>
       </form>

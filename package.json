@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "moment": "^2.18.1",
     "prop-types": "^15.5.10",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
@@ -11,7 +12,8 @@
     "react-scripts": "1.0.10",
     "redux": "^3.7.2",
     "redux-devtools-extension": "^2.13.2",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "shortid": "^2.2.8"
   },
   "scripts": {
     "start": "react-scripts start",

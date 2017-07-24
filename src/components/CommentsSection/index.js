@@ -1,5 +1,5 @@
 import React from 'react';
-import NewComment from '../NewComment';
+import NewComment from '../../containers/NewComment';
 import CommentsFlow from '../CommentsFlow';
 
 const CommentsSection = () => {
@@ -8,8 +8,7 @@ const CommentsSection = () => {
       <div id="comments">
         <NewComment />
         <CommentsFlow />
-      </div>
-      ECHO
+      </div>      
     </div>
   );
 };
