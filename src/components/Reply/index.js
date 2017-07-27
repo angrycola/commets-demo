@@ -8,8 +8,12 @@ class Reply extends Component {
     showReply: false
   }
 
+  increaseLikes = () => {
+    this.props.increaseLikes({ id: this.props.comment.id, user: this.props.user });
+  }
+
+
   renderName = () => {
-    console.log('usernameeee', this.props.comment.user.name);
     return this.props.comment.user.name
   }
 
@@ -36,8 +40,12 @@ class Reply extends Component {
           </div>
           <div className="comment-actions">
             <div className="comment-voting">
-              <button className="up"></button>
-              <div className="score">0</div>
+              <button
+                className="up"
+                onClick={ this.increaseLikes }
+              >
+              </button>
+              <div className="score">{ comment.votes.length }</div>
               <button className="down"></button>
             </div>
             <button
@@ -52,7 +60,7 @@ class Reply extends Component {
           }
 
           {
-            comment.replies.map(comment => <ReplyChild key={ comment.id } comment={ comment } user={ this.props.user }/> )
+            comment.replies.map(comment => <ReplyChild key={ comment.id } comment={ comment } user={ this.props.user } increaseLikes={ this.props.increaseLikes } /> )
           }
         </div>
       </div>

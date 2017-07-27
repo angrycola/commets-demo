@@ -7,11 +7,25 @@ class CommentItem extends Component {
     showReply: false
   }
 
+  increaseLikes = () => {
+    this.props.increaseLikes({ id: this.props.comment.id, user: this.props.user });
+  }
+
+  decreaseLikes = () => {
+    console.log('decrease');
+  }
+
   render() {
     const { showReply } = this.state;
     const { comment } = this.props;
-    const repliesNode = comment.replies.map(reply => <Reply key={ reply.id } comment={ reply } />);
-    
+    const repliesNode = comment.replies.map(reply =>
+      <Reply
+        key={ reply.id }
+        comment={ reply }
+        increaseLikes={ this.props.increaseLikes }
+      />
+    );
+
     return (
       <div className="comment-item">
         <div className="comment-header">
@@ -19,7 +33,7 @@ class CommentItem extends Component {
             <a href="#">
               <img alt="User1"
                 src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-                className="avatar-image size32" />  { this.props.comment.user.name }
+                className="avatar-image size32" />  { comment.user.name }
             </a>
           </span>
           <time className="comment-timestamp">&nbsp;{ comment.timestamp.fromNow() }</time>
@@ -29,9 +43,15 @@ class CommentItem extends Component {
         </div>
         <div className="comment-actions">
           <div className="comment-voting">
-            <button className="up"></button>
-            <div className="score">0</div>
-            <button className="down"></button>
+            <button className="up"
+              onClick={ this.increaseLikes }
+            >
+            </button>
+            <div className="score">{ comment.votes.length  }</div>
+            <button className="down"
+              onClick={ this.decreaseLikes }
+            >
+            </button>
           </div>
           { showReply
             && <NewComment parentId={ this.props.comment.id } />

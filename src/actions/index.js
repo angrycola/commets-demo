@@ -41,4 +41,19 @@ const addReply = comment => (dispatch, getState) => {
     return dispatch(setComments(updatedComments));
 };
 
+
+export const increaseLikes = data => (dispatch, getState) =>  {  
+  const comments = getState().comments;
+
+  const comment = comments.find(item => item.id === data.id);
+  const { votes } = comment;
+  const vote = { [data.id]: data.user };
+  votes.push(vote);
+
+  const updated = { ...comment, votes };
+  const updatedComments = [ ...comments, ...updated ];
+  return dispatch(setComments(updatedComments));
+};
+
+
 const setComments = comments => ({ type: C.SET_COMMENTS, payload: comments });

@@ -1,10 +1,16 @@
 import { connect } from 'react-redux';
 import CommentList from '../../components/CommentList';
+import { increaseLikes } from '../../actions';
 
-//
-const mapStateToProps = ({ comments }) => {
-  const root = comments.filter(comment => comment.parentId === null);
-  return ({ comments: root });
+const mapDispatchToProps = dispatch => {
+  return ({
+    increaseLikes: data => dispatch(increaseLikes(data))
+  });
 };
 
-export default connect(mapStateToProps)(CommentList);
+const mapStateToProps = ({ comments, user }) => {
+  const root = comments.filter(comment => comment.parentId === null);
+  return ({ comments: root, user });
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CommentList);
