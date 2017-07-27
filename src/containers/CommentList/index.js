@@ -3,13 +3,8 @@ import CommentList from '../../components/CommentList';
 
 //
 const mapStateToProps = ({ comments }) => {
-  return ({ comments });
+  const root = comments.filter(comment => comment.parentId === null);
+  return ({ comments: root });
 };
-
-// const mapDispatchToProps = dispatch => {
-//   return ({
-
-//   });
-// };
 
 export default connect(mapStateToProps)(CommentList);

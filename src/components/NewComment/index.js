@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class NewComment extends Component {
+
   state={
     content: ''
   }
@@ -13,7 +14,8 @@ class NewComment extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const comment = { content: this.state.content };
+    const parentId = this.props.parentId === undefined ? null : this.props.parentId;
+    const comment = { content: this.state.content, parentId };
     this.setState({ content: '' });
     this.props.addComment(comment);
   }
