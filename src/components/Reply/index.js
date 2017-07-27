@@ -8,9 +8,15 @@ class Reply extends Component {
     showReply: false
   }
 
+  renderName = () => {
+    console.log('usernameeee', this.props.comment.user.name);
+    return this.props.comment.user.name
+  }
+
   render() {
     const { showReply } = this.state;
-    const { comment } = this.props;    
+    const { comment } = this.props;
+
 
     return (
       <div className="comment-reply">
@@ -20,7 +26,7 @@ class Reply extends Component {
               <a href="#">
                 <img alt="User-name"
                   src="http://i.playground.ru/i/00/00/00/00/user/default/icon.20x20.png"
-                  className="avatar-image size20" /> User-name
+                  className="avatar-image size20" /> { this.renderName() }
               </a>
             </span>
             <time className="comment-timestamp">{ comment.timestamp.fromNow() }</time>
@@ -42,11 +48,11 @@ class Reply extends Component {
             </button>
           </div>
           { showReply
-            && <NewComment parentId={ comment.id }/>
+            && <NewComment parentId={ comment.id } user={ this.props.user }/>
           }
 
           {
-            comment.replies.map(comment => <ReplyChild key={ comment.id } comment={ comment }/> )
+            comment.replies.map(comment => <ReplyChild key={ comment.id } comment={ comment } user={ this.props.user }/> )
           }
         </div>
       </div>

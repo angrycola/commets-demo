@@ -11,7 +11,7 @@ class CommentItem extends Component {
     const { showReply } = this.state;
     const { comment } = this.props;
     const repliesNode = comment.replies.map(reply => <Reply key={ reply.id } comment={ reply } />);
-
+    
     return (
       <div className="comment-item">
         <div className="comment-header">
@@ -19,7 +19,7 @@ class CommentItem extends Component {
             <a href="#">
               <img alt="User1"
                 src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-                className="avatar-image size32" /> User1
+                className="avatar-image size32" />  { this.props.comment.user.name }
             </a>
           </span>
           <time className="comment-timestamp">&nbsp;{ comment.timestamp.fromNow() }</time>

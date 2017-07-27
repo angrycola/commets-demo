@@ -2,8 +2,8 @@ import { connect } from 'react-redux';
 import NewComment from '../../components/NewComment';
 import { addComment } from '../../actions';
 
-const mapStateToProps = (state, props) => {
-  return ({ parentId: props.parentId });
+const mapStateToProps = ({ user }, props) => {  
+  return ({ parentId: props.parentId, user });
 };
 
 const mapDispatchToProps = dispatch => {

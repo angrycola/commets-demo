@@ -15,19 +15,19 @@ class NewComment extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const parentId = this.props.parentId === undefined ? null : this.props.parentId;
-    const comment = { content: this.state.content, parentId };
+    const comment = { content: this.state.content, parentId, user: this.props.user };
     this.setState({ content: '' });
     this.props.addComment(comment);
   }
 
   render() {
-
+    
     return(
       <form>
         <div className="comment-entry">
           <div className="comment-entry-header">
             <img alt="MyNick" src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-                 className="avatar-image size32" /> MyNick
+                 className="avatar-image size32" />{ this.props.user.name }
           </div>
           <div className="form-group">
             <textarea

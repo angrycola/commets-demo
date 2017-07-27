@@ -6,7 +6,9 @@ import { Provider } from 'react-redux';
 import Routes from './routes';
 import { store } from './store';
 import './styles/index.css';
+import { listeningUser } from './actions/user';
 
+store.dispatch(listeningUser());
 
 ReactDOM.render(
   <Provider store={ store }>

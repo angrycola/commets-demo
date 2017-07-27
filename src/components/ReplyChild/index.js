@@ -9,7 +9,7 @@ class ReplyChild extends Component {
 
   render() {
     const { showReply } = this.state;
-    const { comment } = this.props;    
+    const { comment } = this.props;
 
     return (
       <div className="comment-reply">
@@ -19,7 +19,7 @@ class ReplyChild extends Component {
               <a href="#">
                 <img alt="User-name"
                   src="http://i.playground.ru/i/00/00/00/00/user/default/icon.20x20.png"
-                  className="avatar-image size20" /> User-name
+                  className="avatar-image size20" /> { comment.user.name }
               </a>
             </span>
             <time className="comment-timestamp">{ comment.timestamp.fromNow() }</time>
