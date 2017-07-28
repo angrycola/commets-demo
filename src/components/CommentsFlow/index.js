@@ -1,5 +1,5 @@
 import React from 'react';
-import CommentsHeader from '../CommentsHeader';
+import CommentsHeader from '../../containers/CommentsHeader';
 import CommentList from '../../containers/CommentList';
 
 const CommentsFlow = () => {

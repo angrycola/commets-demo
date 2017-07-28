@@ -21,7 +21,6 @@ class Reply extends Component {
     const { showReply } = this.state;
     const { comment } = this.props;
 
-
     return (
       <div className="comment-reply">
         <div className="comment-item">
@@ -36,7 +35,7 @@ class Reply extends Component {
             <time className="comment-timestamp">{ comment.timestamp.fromNow() }</time>
           </div>
           <div className="comment-body">
-            <span className="reply-target">@User1{ comment.content }</span>
+            <span className="reply-target">{ comment.content }</span>
           </div>
           <div className="comment-actions">
             <div className="comment-voting">
