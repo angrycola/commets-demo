@@ -19,7 +19,7 @@ class Users extends Component {
       <div style={ styled }>
 
         Act as: { user.name ? user.name : '' } <br />
-        Available roles: <select onChange={ this.handleChange } value={ this.state.value }>
+        Roles: <select onChange={ this.handleChange } value={ this.state.value }>
             <option value="Invalid">Set user</option>
             <option value="User1">User1</option>
             <option value="User2">User2</option>

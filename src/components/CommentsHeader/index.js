@@ -9,7 +9,7 @@ const CommentsHeader = ({ commentsTotal, sortOldest, sortNewest }) => {
   return (
     <div className="comments-header">
       <div className="pull-right">
-        <a href="#" className="text-muted">Best</a> |
+        <a className="text-muted">Best</a> |
         <a
           style={{ cursor: 'pointer' }}
           onClick={ sortNewest }

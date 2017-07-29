@@ -14,7 +14,6 @@ const mapStateToProps = ({ comments, user, filters }) => {
 
   switch (filters) {
     case "OLDEST":
-
     const oldest = root.sort((a, b) => {
       const atime = a.timestamp.valueOf();
       const btime = b.timestamp.valueOf();
@@ -44,7 +43,6 @@ const mapStateToProps = ({ comments, user, filters }) => {
     });
 
     return ({ comments: newest, user });
-
     default: return ({ comments: newest, user });
   }
 };

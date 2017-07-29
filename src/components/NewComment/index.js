@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 class NewComment extends Component {
 
@@ -18,37 +19,42 @@ class NewComment extends Component {
     const comment = { content: this.state.content, parentId, user: this.props.user };
     this.setState({ content: '' });
     this.props.addComment(comment);
+    console.log('PROPS', this.props);
+    const { toRemove } = this.refs;
+    if (parentId !== null) ReactDOM.findDOMNode(toRemove).remove()
   }
 
   render() {
-    
+
     return(
-      <form>
-        <div className="comment-entry">
-          <div className="comment-entry-header">
-            <img alt="MyNick" src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-                 className="avatar-image size32" />{ this.props.user.name }
-          </div>
-          <div className="form-group">
-            <textarea
-              onChange={ this.handleChange }
-              className="form-control"
-              name="content"
-              value={ this.state.content }
-              placeholder="Put your shit here..."
-            >
-            </textarea>
-          </div>
-          <div className="comment-entry-footer">
-            <button
-              onClick={ this.handleSubmit }
-              type="submit"
-              className="btn btn-default btn-sm btn-block">
-                Submit
-              </button>
-          </div>
-        </div>
-      </form>
+      <div>
+        <form ref='toRemove'>
+          <div className="comment-entry">
+            <div className="comment-entry-header">
+              <img alt="MyNick" src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
+              className="avatar-image size32" />{ this.props.user.name }
+            </div>
+            <div className="form-group">
+              <textarea
+                onChange={ this.handleChange }
+                className="form-control"
+                name="content"
+                value={ this.state.content }
+                placeholder="Put your shit here..."
+              >
+              </textarea>
+              </div>
+              <div className="comment-entry-footer">
+                <button
+                  onClick={ this.handleSubmit }
+                  type="submit"
+                  className="btn btn-default btn-sm btn-block">
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+      </div>
     );
   }
 }

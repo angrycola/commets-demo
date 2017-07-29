@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import NewComment from '../../components/NewComment';
 import { addComment } from '../../actions';
 
-const mapStateToProps = ({ user }, props) => {  
+const mapStateToProps = ({ user }, props) => {
   return ({ parentId: props.parentId, user });
 };
 
