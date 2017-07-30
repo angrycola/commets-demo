@@ -18,8 +18,7 @@ class NewComment extends Component {
     const parentId = this.props.parentId === undefined ? null : this.props.parentId;
     const comment = { content: this.state.content, parentId, user: this.props.user };
     this.setState({ content: '' });
-    this.props.addComment(comment);
-    console.log('PROPS', this.props);
+    this.props.addComment(comment);    
     const { toRemove } = this.refs;
     if (parentId !== null) ReactDOM.findDOMNode(toRemove).remove()
   }

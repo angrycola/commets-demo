@@ -6,10 +6,11 @@ const mapStateToProps = ({ user }, props) => {
   return ({ parentId: props.parentId, user });
 };
 
-const mapDispatchToProps = dispatch => {
-  return ({
-    addComment: comment => dispatch(addComment(comment)),
-  });
-};
+const mapDispatchToProps = dispatch => ({
+    addComment(comment) {
+      dispatch(addComment(comment));
+    }
+});
+
 
 export default connect(mapStateToProps, mapDispatchToProps)(NewComment);

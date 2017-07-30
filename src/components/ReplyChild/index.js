@@ -7,6 +7,10 @@ class ReplyChild extends Component {
     showReply: false
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ showReply: false });
+  }
+
   increaseLikes = () => {
     this.props.increaseLikes({ id: this.props.comment.id, user: this.props.user });
   }
@@ -21,12 +25,16 @@ class ReplyChild extends Component {
           <div className="comment-header">
             <span className="comment-author">
               <a href="#">
-                <img alt="User-name"
+                <img
+                  alt="User-name"
                   src="http://i.playground.ru/i/00/00/00/00/user/default/icon.20x20.png"
-                  className="avatar-image size20" /> { comment.user.name }
+                  className="avatar-image size20" />
+                  { comment.user.name }
               </a>
             </span>
-            <time className="comment-timestamp">{ comment.timestamp.fromNow() }</time>
+            <time className="comment-timestamp">
+              { comment.timestamp.fromNow() }
+            </time>
           </div>
           <div className="comment-body">
             <span className="reply-target">{ comment.content }</span>
@@ -38,7 +46,9 @@ class ReplyChild extends Component {
                 onClick={ this.increaseLikes }
               >
               </button>
-              <div className="score">{ comment.votes.length }</div>
+              <div className="score">
+                { comment.votes.length }
+              </div>
               <button className="down"></button>
             </div>
             <button
@@ -49,11 +59,17 @@ class ReplyChild extends Component {
             </button>
           </div>
           { showReply
-            && <NewComment parentId={ comment.id }/>
+            && <NewComment parentId={ comment.id } />
           }
 
           {
-            comment.replies.map(comment => <Reply key={ comment.id } comment={ comment } increaseLikes={ this.props.increaseLikes }/> )
+            comment.replies.map(comment =>
+              <Reply
+                key={ comment.id }
+                comment={ comment }
+                increaseLikes={ this.props.increaseLikes }
+              />
+            )
           }
         </div>
       </div>

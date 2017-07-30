@@ -7,12 +7,20 @@ class CommentItem extends Component {
     showReply: false
   }
 
+  componentWillReceiveProps(nextProps) {
+    this.setState({ showReply: false });
+  }
+
   increaseLikes = () => {
     this.props.increaseLikes({ id: this.props.comment.id, user: this.props.user });
   }
 
   decreaseLikes = () => {
     console.log('decrease');
+  }
+
+  handleReplyForm = () => {
+    this.setState({ showReply: !this.state.showReply });
   }
 
   render() {
@@ -33,10 +41,13 @@ class CommentItem extends Component {
             <a href="#">
               <img alt="User1"
                 src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-                className="avatar-image size32" />  { comment.user.name }
+                className="avatar-image size32" />
+                { comment.user.name }
             </a>
           </span>
-          <time className="comment-timestamp">&nbsp;{ comment.timestamp.fromNow() }</time>
+          <time className="comment-timestamp">
+            &nbsp;{ comment.timestamp.fromNow() }
+          </time>
         </div>
         <div className="comment-body">
           { comment.content }
@@ -47,7 +58,9 @@ class CommentItem extends Component {
               onClick={ this.increaseLikes }
             >
             </button>
-            <div className="score">{ comment.votes.length  }</div>
+            <div className="score">
+              { comment.votes.length  }
+            </div>
             <button className="down"
               onClick={ this.decreaseLikes }
             >
@@ -57,7 +70,7 @@ class CommentItem extends Component {
             && <NewComment parentId={ this.props.comment.id } />
            }
           <button
-            onClick={ () => this.setState({ showReply: !showReply }) }
+            onClick={ this.handleReplyForm }
             className="btn btn-xs btn-reply"
           >
             reply
@@ -70,40 +83,3 @@ class CommentItem extends Component {
 }
 
 export default CommentItem;
-
-
-
-
-
-
-
-// const CommentItem = () => {
-//   return (
-//     <div className="comment-item">
-//       <div className="comment-header">
-//         <span className="comment-author">
-//           <a href="#">
-//             <img alt="User1"
-//                  src="http://i.playground.ru/i/00/00/00/00/user/default/icon.50x50.png"
-//                  className="avatar-image size32" /> User1
-//           </a>
-//         </span>
-//         <time className="comment-timestamp">12 min ago</time>
-//       </div>
-//       <div className="comment-body">
-//         Even in these scenarios though, you can usually skirt away and clear the board.
-//       </div>
-//       <div className="comment-actions">
-//         <div className="comment-voting">
-//           <button className="up"></button>
-//           <div className="score">0</div>
-//           <button className="down"></button>
-//         </div>
-//         <NewComment />
-//         <button className="btn btn-xs btn-reply">reply</button>
-//       </div>
-//     </div>
-//   );
-// };
-//
-// export default CommentItem;
