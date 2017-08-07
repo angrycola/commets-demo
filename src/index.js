@@ -5,10 +5,13 @@ import { Provider } from 'react-redux';
 
 import Routes from './routes';
 import { store } from './store';
-import './styles/index.css';
 import { listeningUser } from './actions/user';
+import { setLimit } from './actions/filters';
+
+import './styles/index.css';
 
 store.dispatch(listeningUser());
+store.dispatch(setLimit());
 
 ReactDOM.render(
   <Provider store={ store }>

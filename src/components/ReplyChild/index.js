@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import NewComment from '../../containers/NewComment';
 import Reply from '../Reply';
 
@@ -6,7 +7,7 @@ class ReplyChild extends Component {
   state={
     showReply: false
   }
-
+ 
   componentWillReceiveProps(nextProps) {
     this.setState({ showReply: false });
   }
@@ -33,7 +34,7 @@ class ReplyChild extends Component {
               </a>
             </span>
             <time className="comment-timestamp">
-              { comment.timestamp.fromNow() }
+              { moment().from(comment.timestamp) }
             </time>
           </div>
           <div className="comment-body">

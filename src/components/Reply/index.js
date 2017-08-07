@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import NewComment from '../../containers/NewComment';
 import CommentItem from '../../components/CommentItem';
 import ReplyChild from '../ReplyChild';
@@ -15,7 +16,6 @@ class Reply extends Component {
   increaseLikes = () => {
     this.props.increaseLikes({ id: this.props.comment.id, user: this.props.user });
   }
-
 
   renderName = () => {
     return this.props.comment.user.name
@@ -39,7 +39,7 @@ class Reply extends Component {
               </a>
             </span>
             <time className="comment-timestamp">
-              { comment.timestamp.fromNow() }
+              { moment().from(comment.timestamp) }
             </time>
           </div>
           <div className="comment-body">

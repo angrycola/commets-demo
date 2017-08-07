@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';
 import NewComment from '../../containers/NewComment';
 import Reply from '../Reply';
 
@@ -46,7 +47,7 @@ class CommentItem extends Component {
             </a>
           </span>
           <time className="comment-timestamp">
-            &nbsp;{ comment.timestamp.fromNow() }
+            &nbsp; { moment().from(comment.timestamp) }
           </time>
         </div>
         <div className="comment-body">

@@ -3,7 +3,9 @@ const constants = {
   SET_USER: 'SET_USER',
   RESET_USER: 'RESET_USER',
   SET_OLDEST: 'SET_OLDEST',
-  SET_NEWEST: 'SET_NEWEST'
+  SET_NEWEST: 'SET_NEWEST',
+  SET_NO_LIMIT: 'SET_NO_LIMIT',
+  SET_LIMIT: 'SET_LIMIT'
 };
-
+ 
 export default constants;
